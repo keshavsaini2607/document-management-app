@@ -18,78 +18,68 @@ The Document Management and RAG-based Q&A Application is designed to manage user
 
 ## Installation
 
-https://github.com/user-attachments/assets/52b25630-97d3-465c-a48e-f6bf1187e74a
+![video]https://www.loom.com/share/1b9740fdf46b47169ecf0fe46701672b?sid=8a394463-30c6-4ba3-972d-33fa30505d28
 
 ### Prerequisites
 Ensure the following are installed:
 - **Node.js**  
-- **Angular CLI**  
 - **Docker**  
 
 ### Steps
 1. **Clone the repository**:
    
   ```bash
-   git clone https://github.com/0xrisec/document-management-app.git
+   git clone https://github.com/keshavsaini2607/user-management-app.git
   ```
 2. **Setup Frontend:**
    
   ```bash
-    cd document-management-ui
+    cd user-management-app/client
     npm install
-    npm run start
+    npm run dev
   ```
-  Access the frontend at: http://localhost:4200/
+  Access the frontend at: http://localhost:3000/
 
 3. **Setup Backend:**
 
 Open a new terminal and navigate to the backend directory:
   ```
-    cd document-management-backend
+    cd user-management-app/server
   ```
 
 4. **Pull and run the Docker image:**
 
  ```
-    docker pull vikas9012/document-management-app:1.0.0
-    docker run -d -p 3000:3000 -p 8080:8080 vikas9012/document-management-app:1.0.0
+    docker pull keshavsaini0905/docify-server
+    docker run -d -p 8000:8000 keshavsaini0905/docify-server
   ```
-Backend API: http://localhost:3000/
-
-WebSocket Service: Port 8080
+Backend API: http://localhost:8000/
 
 5. **Access the Application:**:
-Visit http://localhost:4200/ to use the application.
+Visit http://localhost:3000/ to use the application.
 
 # Architecture Overview
 
 This diagram illustrates the architectural design of the project, showcasing the interplay between various components and technologies.
 
-![Customer Journey Map (2)](https://github.com/user-attachments/assets/83425d4f-d8de-40cb-b9c6-884f4efca36d)
+![image](https://github.com/user-attachments/assets/b4dd0710-a512-4fa3-b77e-c83769a5bcfd)
+
 
 **Key Components:**
 
-1. **Client:** The frontend of the application, built using Angular, handles user interactions and displays data.
-2. **Angular:** A powerful JavaScript framework for building robust and scalable web applications. It facilitates the creation of dynamic and interactive user interfaces.
+1. **Client:** The frontend of the application, built using NextJS, handles user interactions and displays data.
+2. **NextJS:** A powerful JavaScript library for building robust and scalable web applications. It facilitates the creation of dynamic and interactive user interfaces.
 3. **Google Analytics 4:** This is a web analytics service provided by Google that allows you to track user behavior and website performance. It's likely integrated to collect data on user interactions with your application.
 4. **NestJS:** A progressive Node.js framework for building efficient and scalable server-side applications. It provides a structured approach to organizing code and handling API requests.
-5. **TypeORM:** An object-relational mapper (ORM) that simplifies database interactions by providing a type-safe and intuitive way to work with data models. It connects the NestJS backend to the MongoDB database.
+5. **Prisma:** An object-relational mapper (ORM) that simplifies database interactions by providing a type-safe and intuitive way to work with data models. It connects the NestJS backend to the MongoDB database.
 6. **MongoDB:** A flexible NoSQL database that excels in handling large volumes of unstructured data. It serves as the data storage layer for the application.
-7. **Cloudinary:** A cloud-based platform designed to optimize, store, and deliver image and video assets efficiently. It integrates with a NestJS backend to handle raw document uploads.
-8. **LangChain:** An AI framework that orchestrates the interaction between various components, including embeddings, vector stores, and large language models (LLMs).
-9. **Hugging Face Inference Embeddings:** A service for generating embeddings (numerical representations of text data) using Hugging Face's models.
-10. **Gemini Pro:** A large language model (LLM) that can be used for generating text, translating languages, and other natural language tasks.
-11. **MemoryVectorStore:** A component that stores and retrieves embeddings, allowing the LLM to access and process information from the database.
+7. **AWS S3:** A cloud-based service provided by AWS designed to optimize, store, and deliver assets efficiently. It integrates with a NestJS backend to handle raw document uploads.
+
 
 **Data Flow and Interactions**
 
-1. **Client to Angular:** The user interacts with the Angular-based frontend, triggering actions like making requests or submitting forms.
-2. **Angular to NestJS:** Angular sends requests to the NestJS backend, which handles the business logic and data processing.
-3. **NestJS to TypeORM:** NestJS interacts with the database using TypeORM to fetch or store data as needed.
-4. **NestJS to Cloudinary:** NestJS interacts with Cloudinary to manage documents, uploading, or fetching them.
-5. **NestJS to LangChain:** NestJS sends data to LangChain for processing and analysis.
-6. **LangChain to Hugging Face Inference Embeddings:** LangChain sends document data to the Hugging Face service to generate embeddings.
-7. **LangChain to MemoryVectorStore:** LangChain stores the generated embeddings in the MemoryVectorStore for later retrieval and analysis.
-8. **LangChain to Gemini:** LangChain interacts with the Gemini LLM to perform tasks like text generation, translation, or summarization.
-9. **LangChain to NestJS:** LangChain returns the processed data (e.g., generated text, embeddings) to NestJS for further processing or sending back to the client.
-10. **NestJS to Angular:** NestJS sends the processed data or responses to Angular, which updates the user interface accordingly.
+1. **Client to NextJS:** The user interacts with the NextJS frontend, triggering actions like making requests or submitting forms.
+2. **NextJS to NestJS:** NextJS sends requests to the NestJS backend, which handles the business logic and data processing.
+3. **NestJS to Prisma:** NestJS interacts with the database using Prisma to fetch or store data as needed.
+4. **NestJS to S3:** NestJS interacts with S3 to manage documents, uploading, or fetching them.
+
